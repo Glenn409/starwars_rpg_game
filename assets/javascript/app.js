@@ -128,10 +128,10 @@ function fight(){
 }
 //simulates end game and restarts it for user
 function endGame(){
-     obi = createChar('obi-wan','Obi-Wan Kenobi',120,randomAP(),randomCP(),'/assets/images/obi2.jpg');
-     luke = createChar('skywalker','Luke Skywalker',100,randomAP(),randomCP(),'/assets/images/Skywalker-1.jpg');
-     sidious = createChar('darth_sidious','Darth Sidious',150,randomAP(),randomCP(),'/assets/images/sidious.jpg');
-     maul = createChar('darth_maul', 'Darth Maul',180, randomAP(), randomCP(),'/assets/images/maul.jpg');
+     obi = createChar('obi-wan','Obi-Wan Kenobi',120,randomAP(),randomCP(),'assets/images/obi2.jpg');
+     luke = createChar('skywalker','Luke Skywalker',100,randomAP(),randomCP(),'assets/images/Skywalker-1.jpg');
+     sidious = createChar('darth_sidious','Darth Sidious',150,randomAP(),randomCP(),'assets/images/sidious.jpg');
+     maul = createChar('darth_maul', 'Darth Maul',180, randomAP(), randomCP(),'assets/images/maul.jpg');
     
     your_char = [];
     char_array = [obi,luke,sidious,maul];
