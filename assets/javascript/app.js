@@ -1,32 +1,33 @@
 //created toosn with random stats;
-var obi = createChar('obi-wan','Obi-Wan Kenobi',120,randomAP(),randomCP());
-var luke = createChar('skywalker','Luke Skywalker',100,randomAP(),randomCP());
-var sidious = createChar('darth_sidious','Darth Sidious',150,randomAP(),randomCP());
-var maul = createChar('darth_maul', 'Darth Maul',180, randomAP(), randomCP());
-
+var obi = createChar('obi-wan','Obi-Wan Kenobi',120,randomAP(),randomCP(),'/assets/images/obi2.jpg');
+var luke = createChar('skywalker','Luke Skywalker',100,randomAP(),randomCP(),'/assets/images/Skywalker-1.jpg');
+var sidious = createChar('darth_sidious','Darth Sidious',150,randomAP(),randomCP(),'/assets/images/sidious.jpg');
+var maul = createChar('darth_maul', 'Darth Maul',180, randomAP(), randomCP(),'/assets/images/maul.jpg');
+//create arrays for controlling the flow of the game
 var your_char = [];
 var char_array = [obi,luke,sidious,maul];
 var fighting_char = [];
-
+//prevents user from clicking to have more than one active enemy;
 var continue_status = true;
 
 // function create a char
-function createChar(title,display_name,hp,ap,cap){
+function createChar(title,display_name,hp,ap,cap,image){
     obj = {
         name: title,
         display: display_name,
         health_points: hp,
         attack_power: ap,
-        counter_attack_power: cap
+        counter_attack_power: cap,
+        img: image
     }
     return obj;
 };
 
-//creates a random attack power for unit from 4-11 dmg;
+//creates a random attack power for unit from;
 function randomAP(){
     return Math.floor(Math.random()*8) + 4;
 }
-//creates random Counter Power for unit from 5-25 dmg;
+//creates random Counter Power for unit;
 function randomCP(){
     return Math.floor(Math.random()*21) + 3;
 }
@@ -36,8 +37,9 @@ function update_char(){
     var char = your_char[0];
     $('.start_charBox').remove();
     $('.char_selection').append(
-        `<div class="start_charBox" id="${char.name}">
+        `<div class="start_charBox main-char" id="${char.name}">
             <div>${char.display}</div>
+            <img src=${char.img}>
             <div>Current Health Points: ${char.health_points}</div>
             <div>Current Attack Power:  ${char.attack_power}</div>
         </div> `
@@ -62,9 +64,12 @@ function move_enemy_to_fight(enemy){
 function update_fight_row(){
     $('.fight_row').text('');
     $('.fight_row').append(
-        `<button class='button'>Attack</button>
-         <div class="fight_box" id=${fighting_char[0].name}>${fighting_char[0].display}</div>
-         <div class="stats hp">HP: ${fighting_char[0].health_points}</div>`
+        `<div>
+            <button class='button'>Attack</button>
+            <div>${fighting_char[0].display}</div>
+            <img class='fightIMG' src=${fighting_char[0].img}>
+            <p>HP: ${fighting_char[0].health_points}</p>
+         </div>`
         )
 }
 //creates enemies and updates choices
@@ -74,8 +79,9 @@ function update_enemies(){
             console.log(char_array[i]);
             $('.enemies_selection').append(
                 `<div class="enemiesBox" id="${char_array[i].name}">
-                    <div class="stats name">${char_array[i].display}</div>
-                    <div class="stats hp">HP: ${char_array[i].health_points}</div>
+                    <h1>${char_array[i].display}</h1>
+                    <img class='enemieIMG' src=${char_array[i].img}>
+                    <p>HP: ${char_array[i].health_points}</p>
                 </div>`
             )
         }
@@ -122,10 +128,10 @@ function fight(){
 }
 //simulates end game and restarts it for user
 function endGame(){
-    obi = createChar('obi-wan','Obi-Wan Kenobi',120,randomAP(),randomCP());
-    luke = createChar('skywalker','Luke Skywalker',100,randomAP(),randomCP());
-    sidious = createChar('darth_sidious','Darth Sidious',150,randomAP(),randomCP());
-    maul = createChar('darth_maul', 'Darth Maul',180, randomAP(), randomCP());
+     obi = createChar('obi-wan','Obi-Wan Kenobi',120,randomAP(),randomCP(),'/assets/images/obi2.jpg');
+     luke = createChar('skywalker','Luke Skywalker',100,randomAP(),randomCP(),'/assets/images/Skywalker-1.jpg');
+     sidious = createChar('darth_sidious','Darth Sidious',150,randomAP(),randomCP(),'/assets/images/sidious.jpg');
+     maul = createChar('darth_maul', 'Darth Maul',180, randomAP(), randomCP(),'/assets/images/maul.jpg');
     
     your_char = [];
     char_array = [obi,luke,sidious,maul];
@@ -140,16 +146,24 @@ function endGame(){
 
     $('.char_selection').append(
         `<div class="start_charBox" id='obi-wan'>
-            Obi-Wan Kenobi
-        </div>
-        <div class="start_charBox" id='skywalker'>
-            Luke Skywalker
+            <h1>Obi-Wan Kenobi</h1>
+            <img src='/assets/images/obi2.jpg'>
+            <p class='hp'>120</p>
          </div>
+         <div class="start_charBox" id='skywalker'>
+            <h1>Luke skywalker</h1>
+            <img src='/assets/images/Skywalker-1.jpg'>
+            <p class='hp'>100</p>
+        </div>
         <div class="start_charBox" id='darth_sidious'>
-            Darth Sidious
+            <h1>Dark Sidious</h1>
+            <img src='/assets/images/sidious.jpg'>
+            <p class='hp'>150</p>
         </div>
         <div class="start_charBox" id='darth_maul'>
-            Darth Maul
+            <h1>Darth Maul</h1>
+            <img src='/assets/images/maul.jpg'>
+            <p class='hp'>180</p>
         </div>`
     )
     $('#pick').text('Pick a unit!')
