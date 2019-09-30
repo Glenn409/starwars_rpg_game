@@ -21,3 +21,8 @@ body{
     border:3px solid green;
     cursor: pointer;
 }
+.enemies_selection{
+    display:flex;
+    justify-content: space-evenly;
+    border-bottom:2px solid red;
+}
