@@ -147,22 +147,22 @@ function endGame(){
     $('.char_selection').append(
         `<div class="start_charBox" id='obi-wan'>
             <h1>Obi-Wan Kenobi</h1>
-            <img src='assets/images/obi2.jpg'>
+            <img src='../images/obi2.jpg'>
             <p class='hp'>120</p>
          </div>
          <div class="start_charBox" id='skywalker'>
             <h1>Luke skywalker</h1>
-            <img src='assets/images/Skywalker-1.jpg'>
+            <img src='../images/Skywalker-1.jpg'>
             <p class='hp'>100</p>
         </div>
         <div class="start_charBox" id='darth_sidious'>
             <h1>Dark Sidious</h1>
-            <img src='assets/images/sidious.jpg'>
+            <img src='../images/sidious.jpg'>
             <p class='hp'>150</p>
         </div>
         <div class="start_charBox" id='darth_maul'>
             <h1>Darth Maul</h1>
-            <img src='assets/images/maul.jpg'>
+            <img src='../images/maul.jpg'>
             <p class='hp'>180</p>
         </div>`
     )
